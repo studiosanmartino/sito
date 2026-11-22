@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Studio Medico San Martino</title>
+<meta name="description" content="Studio Medico San Martino, Mendrisio: medicina interna generale (Dr.ssa med. Ilaria Minio), medici specialisti, radiologia, laboratorio, ecografia. Via San Martino 16A, tel. +41 91 640 50 40.">
+<style>:root{color-scheme:light}body{margin:0}img{max-width:100%}</style>
+</head>
+<body>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+/* Layout: una pagina lunga a sezioni, colonna di lettura stretta, tabella settimanale a tutta larghezza; verde-ardesia e menta del biglietto da visita. */
+:root{
+  --bg:#f6f7f4;
+  --surface:#ffffff;
+  --fg:#1f2927;
+  --muted:#5b6865;
+  --line:#d6dfe1;
+  --ink:#1d3a41;        /* petrolio scuro, dal teal del logo */
+  --ink-fg:#f1f6f6;
+  --teal:#71a7b3;       /* chevron e scritta del logo */
+  --mint:#7fd8c0;       /* stetoscopio del logo */
+  --mint-soft:#e2f4ef;
+  --today:#edf5f6;
+  --display:'Jost',"Helvetica Neue",Arial,sans-serif;
+  --body:'Source Sans 3',"Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#161c1b; --surface:#1e2625; --fg:#e8ece9; --muted:#a6b1ad; --line:#2f3a37;
+    --ink:#0f1f23; --ink-fg:#eef3f3; --teal:#8bbcc6; --mint:#7fd8c0; --mint-soft:#1f3330; --today:#1e2d31;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#161c1b; --surface:#1e2625; --fg:#e8ece9; --muted:#a6b1ad; --line:#2f3a37;
+  --ink:#0f1f23; --ink-fg:#eef3f3; --teal:#8bbcc6; --mint:#7fd8c0; --mint-soft:#1f3330; --today:#1e2d31;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.55}
+h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.15;margin:0;text-wrap:balance}
+h2{font-size:1.9rem}
+h3{font-size:1.2rem;font-weight:600}
+p{margin:0}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px}
+.eyebrow{font-family:var(--display);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal)}
+.lead{font-size:1.15rem;max-width:62ch}
+.prose{max-width:65ch}
+.prose p + p{margin-top:.8em}
+.note{font-size:.95rem;color:var(--muted)}
+
+/* header */
+header .topbar-bg{background:var(--surface);border-bottom:1px solid var(--line)}
+.hero{background:var(--ink);color:var(--ink-fg)}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none}
+.brand img{height:64px;width:auto;display:block;background:#fff;border-radius:4px}
+nav{display:flex;gap:4px 18px;flex-wrap:wrap}
+nav a{font-family:var(--display);font-size:.9rem;text-decoration:none;color:var(--ink);padding:4px 0;border-bottom:1px solid transparent}
+nav a:hover,nav a:focus-visible{border-bottom-color:var(--teal);outline:none}
+
+.hero{padding-block:56px 48px}
+.hero .eyebrow{color:var(--mint)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(2rem,4.6vw,3.3rem);font-weight:300}
+.hero h1 b{font-weight:500;color:var(--mint)}
+.hero .lead{margin-top:18px;opacity:.9}
+.hero-contacts{border-left:2px solid var(--mint);padding-left:20px;display:grid;gap:12px;font-size:1.02rem;margin-top:28px}
+.hero-photo{margin:0;aspect-ratio:4/3;max-width:100%;overflow:hidden;border-radius:6px;background:#0f1f23}
+.hero-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:36px}
+.gallery figure{margin:0;min-width:0}
+.gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border-radius:4px}
+.gallery figcaption{font-size:.85rem;color:var(--muted);margin-top:6px}
+.gallery.two{grid-template-columns:1fr 1fr;margin-top:24px}
+.gallery.two img{aspect-ratio:3/2}
+.gallery.four{grid-template-columns:repeat(4,1fr);margin-top:28px}
+.doctors{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:40px;max-width:760px}
+.doctors figure{margin:0;min-width:0}
+.doctors img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:50% 30%;display:block;border-radius:4px}
+.doctors img.right{object-position:88% 15%}
+.doctors figcaption{margin-top:12px}
+.doctors figcaption b{font-family:var(--display);font-weight:500;font-size:1.1rem;display:block}
+.doctors figcaption span{color:var(--muted);font-size:.95rem}
+.hero-contacts .k{font-family:var(--display);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;opacity:.7}
+.hero-contacts .v{font-size:1.15rem;font-variant-numeric:tabular-nums}
+.hero-contacts a{text-decoration:none}
+
+/* sections */
+section{padding-block:60px;border-top:1px solid var(--line)}
+section:first-of-type{border-top:0}
+.sec-head{display:grid;gap:10px;margin-bottom:28px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.two>*{min-width:0}
+
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2px;background:var(--line);border:1px solid var(--line)}
+.services div{background:var(--surface);padding:20px 18px}
+.services h3{font-size:1.05rem;margin-bottom:6px}
+.services p{font-size:.95rem;color:var(--muted)}
+
+/* weekly table */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:.95rem}
+th,td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+thead th{font-family:var(--display);font-weight:500;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:var(--bg);position:sticky;top:0}
+th.name{white-space:nowrap;font-weight:600}
+td.spec{color:var(--muted);white-space:nowrap}
+td.d{font-variant-numeric:tabular-nums}
+td.d small{display:block;color:var(--muted);font-size:.82rem}
+tbody tr:last-child td,tbody tr:last-child th{border-bottom:0}
+.is-today{background:var(--today)}
+thead th.is-today{color:var(--fg)}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px;font-size:.9rem;color:var(--muted)}
+.legend i{display:inline-block;width:14px;height:14px;background:var(--today);border:1px solid var(--line);vertical-align:-2px;margin-right:6px}
+
+/* people */
+.people{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px 32px}
+.people h3{font-size:1.05rem}
+.people p{color:var(--muted);font-size:.95rem}
+
+/* hours */
+.hours{display:grid;gap:0;border:1px solid var(--line);background:var(--surface)}
+.hours div{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:10px 16px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.hours div:last-child{border-bottom:0}
+.hours b{font-family:var(--display);font-weight:500}
+.contactlist{display:grid;gap:14px;margin-top:22px}
+.contactlist .k{font-family:var(--display);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.contactlist .v{font-size:1.1rem}
+
+/* route */
+.route{counter-reset:step;display:grid;gap:14px;margin:0;padding:0;list-style:none;max-width:60ch}
+.route li{display:grid;grid-template-columns:30px 1fr;gap:14px;align-items:start}
+.route li span{padding-top:3px}
+.route li::before{counter-increment:step;content:counter(step);font-family:var(--display);font-weight:500;width:30px;height:30px;border-radius:50%;background:var(--mint-soft);color:var(--ink);display:grid;place-items:center;font-size:.9rem}
+:root[data-theme="dark"] .route li::before{color:var(--mint)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .route li::before{color:var(--mint)}}
+.landmark{margin:0 0 36px}
+.landmark img{width:100%;height:auto;display:block;border-radius:6px}
+.landmark figcaption{font-size:.95rem;color:var(--muted);margin-top:10px;max-width:70ch}
+.transport{display:grid;gap:18px;align-content:start}
+.transport h3{font-size:1rem;margin-bottom:4px}
+.transport p{max-width:48ch}
+
+footer{background:var(--ink);color:var(--ink-fg);padding-block:40px;font-size:.92rem}
+footer .wrap{display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px}
+footer .wrap>*{min-width:0}
+footer h3{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;opacity:.7;margin-bottom:10px}
+footer p{opacity:.9}
+footer p + p{margin-top:.5em}
+
+@media (max-width:760px){
+  body{font-size:16px}
+  .hero{padding-block:40px 36px}
+  .hero .wrap,.two,footer .wrap{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr 1fr}
+  .gallery.two,.doctors{grid-template-columns:1fr}
+  .gallery.four{grid-template-columns:1fr 1fr}
+  section{padding-block:44px}
+  h2{font-size:1.6rem}
+  .hours div{grid-template-columns:90px 1fr}
+}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+
+<header>
+  <div class="topbar-bg"><div class="wrap topbar">
+    <a class="brand" href="#top" aria-label="Studio Medico San Martino">
+      <img src="data:image/png;base64,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" alt="Studio Medico San Martino" width="143" height="110">
+    </a>
+    <nav aria-label="Sezioni">
+      <a href="#studio">Lo studio</a>
+      <a href="#servizi">Servizi</a>
+      <a href="#specialisti">Specialisti</a>
+      <a href="#team">Team</a>
+      <a href="#contatti">Orari e contatti</a>
+      <a href="#arrivare">Come arrivare</a>
+    </nav>
+  </div></div>
+  <div class="hero" id="top">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Mendrisio · Via San Martino 16A</p>
+        <h1 style="margin-top:10px">Medicina di famiglia e <b>visite specialistiche</b> a Mendrisio</h1>
+        <p class="lead">Studio di medicina interna generale della Dr.ssa med. Ilaria Minio, con radiologia, laboratorio, ecografia e sala medicazioni e infusioni in sede, e un gruppo di medici specialisti e terapisti che ricevono su appuntamento.</p>
+        <div class="hero-contacts">
+          <div><div class="k">Telefono</div><div class="v"><a href="tel:+41916405040">+41 91 640 50 40</a></div></div>
+          <div><div class="k">Email</div><div class="v"><a href="mailto:studio.san.martino@hin.ch">studio.san.martino@hin.ch</a></div></div>
+          <div><div class="k">Consultazioni</div><div class="v">Lunedì – venerdì, 8.30 – 17.00</div></div>
+        </div>
+      </div>
+      <figure class="hero-photo"><img src="photos/reception.jpg" alt="La reception dello Studio Medico San Martino" width="1600" height="1200"></figure>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="studio">
+  <div class="wrap two">
+    <div>
+      <p class="eyebrow">Lo studio</p>
+      <h2 style="margin-top:8px">Dr.ssa med. Ilaria Minio</h2>
+      <p class="note" style="margin-top:6px">Specialista FMH in medicina interna generale</p>
+    </div>
+    <div class="prose">
+      <p>Lo Studio Medico San Martino è uno studio di medicina di famiglia a Mendrisio e occupa per intero il quarto piano dell'edificio di Via San Martino 16A: sale d'attesa, ambulatori, radiologia, laboratorio e sala trattamenti sono tutti sullo stesso piano. La Dr.ssa Minio segue i pazienti adulti per le cure di base, i controlli periodici, la gestione delle malattie croniche e le urgenze ambulatoriali, e coordina le visite presso gli specialisti che ricevono nello studio.</p>
+      <p>Il lunedì pomeriggio la Dr.ssa Minio è dedicata alle visite a domicilio per i pazienti che non possono recarsi in studio.</p>
+      <p>Le consultazioni si svolgono in italiano e in inglese; sono possibili anche in tedesco e in francese.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="doctors">
+      <figure><img class="right" src="photos/ilaria-minio.jpg" alt="Dr.ssa med. Ilaria Minio" loading="lazy"><figcaption><b>Dr.ssa med. Ilaria Minio</b><span>Specialista FMH in medicina interna generale · medico di famiglia</span></figcaption></figure>
+      <figure><img src="photos/leonardo-sacco-ritratto.jpg" alt="PD Dr. med. Leonardo Sacco" loading="lazy"><figcaption><b>PD Dr. med. Leonardo Sacco</b><span>Specialista FMH in neurologia · perito certificato SIM (Swiss Insurance Medicine) · riceve il mercoledì mattina</span></figcaption></figure>
+    </div>
+    <div class="gallery">
+      <figure><img src="photos/sala-terapie.jpg" alt="Sala terapie" loading="lazy"><figcaption>Sala terapie</figcaption></figure>
+      <figure><img src="photos/sala-attesa.jpg" alt="Sala d'attesa" loading="lazy"><figcaption>Sala d'attesa</figcaption></figure>
+      <figure><img src="photos/ambulatorio-minio.jpg" alt="Ambulatorio della Dr.ssa Minio" loading="lazy"><figcaption>Ambulatorio di medicina interna</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="servizi">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Servizi in sede</p>
+      <h2>Esami e trattamenti senza spostarsi</h2>
+      <p class="lead">L'intero quarto piano è dedicato allo studio: senza cambiare edificio sono disponibili i principali esami diagnostici e una sala attrezzata per medicazioni e terapie infusionali.</p>
+    </div>
+    <div class="services">
+      <div><h3>Radiologia</h3><p>Esami radiologici in sede, con refertazione dello specialista radiologo.</p></div>
+      <div><h3>Ecografia</h3><p>Esami ecografici eseguiti direttamente nello studio.</p></div>
+      <div><h3>Laboratorio</h3><p>Prelievi ed esami di laboratorio con risposta rapida.</p></div>
+      <div><h3>Punto prelievi Medisyn</h3><p>Prelievi del sangue anche su prescrizione di altri medici, con analisi presso il laboratorio Medisyn.</p></div>
+      <div><h3>Sala medicazioni e infusioni</h3><p>Infusioni, medicazioni, iniezioni e piccoli interventi ambulatoriali, con osservazione in sede quando necessario.</p></div>
+      <div><h3>Visite a domicilio</h3><p>Il lunedì pomeriggio, per i pazienti che non possono raggiungere lo studio.</p></div>
+      <div><h3>Cure infermieristiche</h3><p>Medicazioni, iniezioni e controlli con l'infermiera di studio.</p></div>
+      <div><h3>Perizie neurologiche</h3><p>Perizie medico-assicurative a cura del PD Dr. med. Leonardo Sacco, perito certificato SIM (Swiss Insurance Medicine).</p></div>
+    </div>
+    <div class="gallery four">
+      <figure><img src="photos/radiologia.jpg" alt="Sala di radiologia" loading="lazy"><figcaption>Radiologia</figcaption></figure>
+      <figure><img src="photos/ecografia.jpg" alt="Sala ecografie" loading="lazy"><figcaption>Ecografia</figcaption></figure>
+      <figure><img src="photos/laboratorio.jpg" alt="Laboratorio interno" loading="lazy"><figcaption>Laboratorio</figcaption></figure>
+      <figure><img src="photos/sala-trattamenti.jpg" alt="Sala trattamenti e infusioni" loading="lazy"><figcaption>Sala medicazioni e infusioni</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="specialisti">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Specialisti e terapisti</p>
+      <h2>Chi riceve nello studio, e quando</h2>
+      <p class="lead">Tutte le visite specialistiche sono su appuntamento: per prenotare chiamate il segretariato al +41 91 640 50 40.</p>
+    </div>
+    <div class="tablewrap">
+      <table id="settimana">
+        <thead>
+          <tr><th scope="col">Nome</th><th scope="col">Specialità</th><th scope="col" data-day="1">Lunedì</th><th scope="col" data-day="2">Martedì</th><th scope="col" data-day="3">Mercoledì</th><th scope="col" data-day="4">Giovedì</th><th scope="col" data-day="5">Venerdì</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row" class="name">Dr.ssa med. Ilaria Minio</th><td class="spec">Medicina interna</td><td class="d">8.30 – 17.00<small>pomeriggio: visite a domicilio</small></td><td class="d">8.30 – 17.00</td><td class="d">8.30 – 12.00</td><td class="d">8.30 – 17.00</td><td class="d">8.30 – 17.00</td></tr>
+          <tr><th scope="row" class="name">Annanisia Centra</th><td class="spec">Psicologia</td><td class="d">tutto il giorno</td><td class="d"></td><td class="d"></td><td class="d"></td><td class="d"></td></tr>
+          <tr><th scope="row" class="name">Marika Urbani</th><td class="spec">Agopuntura</td><td class="d"></td><td class="d">fino alle 16.00</td><td class="d"></td><td class="d"></td><td class="d"></td></tr>
+          <tr><th scope="row" class="name">Dr. med. Mario Manganiello</th><td class="spec">Radiologia</td><td class="d"></td><td class="d">mattina</td><td class="d"></td><td class="d"></td><td class="d"></td></tr>
+          <tr><th scope="row" class="name">Anna Damonti</th><td class="spec">Riflessologia</td><td class="d"></td><td class="d"></td><td class="d">tutto il giorno</td><td class="d"></td><td class="d"></td></tr>
+          <tr><th scope="row" class="name">PD Dr. med. Leonardo Sacco</th><td class="spec">Neurologia</td><td class="d"></td><td class="d"></td><td class="d">8.30 – 13.30</td><td class="d"></td><td class="d"></td></tr>
+          <tr><th scope="row" class="name">Martino Ceroni</th><td class="spec">Neuropsicologia</td><td class="d"></td><td class="d"><small>saltuariamente, pomeriggio</small></td><td class="d">9.30 – 15.00</td><td class="d"></td><td class="d"></td></tr>
+          <tr><th scope="row" class="name">Edoardo Eugenio Sagnella</th><td class="spec">Fisioterapia</td><td class="d">13.00 – 17.00</td><td class="d"></td><td class="d">8.00 – 12.00</td><td class="d"></td><td class="d"></td></tr>
+          <tr><th scope="row" class="name">Dr.ssa med. Bianca Maria Regazzoni</th><td class="spec">Pediatria</td><td class="d"></td><td class="d">pomeriggio</td><td class="d">pomeriggio</td><td class="d">mattina</td><td class="d"></td></tr>
+          <tr><th scope="row" class="name">Andrei Sorescu</th><td class="spec">Psicologia (bambini e adulti)</td><td class="d"></td><td class="d"></td><td class="d"></td><td class="d">pomeriggio</td><td class="d">pomeriggio</td></tr>
+          <tr><th scope="row" class="name">Dr.ssa med. Chiara Mondino</th><td class="spec">Allergologia</td><td class="d"></td><td class="d"></td><td class="d"></td><td class="d">9.00 – 16.00<small>ogni 14 giorni</small></td><td class="d"></td></tr>
+          <tr><th scope="row" class="name">Elisabeth Vella</th><td class="spec">Cure infermieristiche</td><td class="d"></td><td class="d"></td><td class="d">pomeriggio</td><td class="d"></td><td class="d">pomeriggio</td></tr>
+          <tr><th scope="row" class="name">Dr. med. Axel-Michael Pippow</th><td class="spec">Ortopedia e traumatologia</td><td class="d"></td><td class="d"></td><td class="d"></td><td class="d"></td><td class="d">mattina<small>non tutte le settimane</small></td></tr>
+          <tr><th scope="row" class="name">Dr. med. Francesco Salmoiraghi</th><td class="spec">Chirurgia</td><td class="d">una volta al mese</td><td class="d"></td><td class="d"></td><td class="d"></td><td class="d"></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="legend"><span><i></i>Giorno di oggi</span><span>Le presenze possono variare: il segretariato conferma data e ora al momento della prenotazione.</span></div>
+    <div class="gallery four">
+      <figure><img src="photos/pediatria.jpg" alt="Ambulatorio pediatrico" loading="lazy"><figcaption>Ambulatorio pediatrico</figcaption></figure>
+      <figure><img src="photos/fisioterapia.jpg" alt="Sala di fisioterapia" loading="lazy"><figcaption>Fisioterapia</figcaption></figure>
+      <figure><img src="photos/colloqui.jpg" alt="Studio per i colloqui" loading="lazy"><figcaption>Studio per i colloqui</figcaption></figure>
+      <figure><img src="photos/ambulatorio-specialisti.jpg" alt="Ambulatorio specialistico" loading="lazy"><figcaption>Ambulatorio specialistico</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="team">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Il team di studio</p>
+      <h2>Chi vi accoglie</h2>
+    </div>
+    <div class="people">
+      <div><h3>Desirée Di Stefano</h3><p>Assistente di studio medico</p></div>
+      <div><h3>Katia Jans Di Ludovico</h3><p>Assistente di studio medico</p></div>
+      <div><h3>Valentina Benso</h3><p>Apprendista assistente di studio medico</p></div>
+      <div><h3>Myrto Missirlis</h3><p>Segretaria</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contatti">
+  <div class="wrap two">
+    <div>
+      <p class="eyebrow">Orari e contatti</p>
+      <h2 style="margin:8px 0 20px">Consultazioni della Dr.ssa Minio</h2>
+      <div class="hours">
+        <div><b>Lunedì</b><span>8.30 – 17.00 · pomeriggio visite a domicilio</span></div>
+        <div><b>Martedì</b><span>8.30 – 17.00</span></div>
+        <div><b>Mercoledì</b><span>8.30 – 12.00</span></div>
+        <div><b>Giovedì</b><span>8.30 – 17.00</span></div>
+        <div><b>Venerdì</b><span>8.30 – 17.00</span></div>
+      </div>
+      <p class="note" style="margin-top:12px">Le visite si svolgono su appuntamento. In caso di emergenza chiamate il 144.</p>
+    </div>
+    <div>
+      <div class="contactlist">
+        <div><div class="k">Indirizzo</div><div class="v">Studio Medico San Martino<br>Via San Martino 16A<br>6850 Mendrisio</div></div>
+        <div><div class="k">Telefono</div><div class="v"><a href="tel:+41916405040">+41 91 640 50 40</a></div></div>
+        <div><div class="k">Email</div><div class="v"><a href="mailto:studio.san.martino@hin.ch">studio.san.martino@hin.ch</a></div></div>
+        <div><div class="k">Lingue</div><div class="v">Italiano, inglese · anche tedesco e francese</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="arrivare">
+  <div class="wrap">
+    <p class="eyebrow">Come arrivare</p>
+    <h2 style="margin:8px 0 24px">Dove siamo</h2>
+    <figure class="landmark">
+      <img src="photos/percorso.jpg" alt="Il complesso di Via San Martino dalla strada, con il percorso: 1 ingresso tra Farmacia e Aldi con ascensore, 2 livello 2 con le tre palazzine, 3 quarto piano dell'edificio di destra evidenziato in rosso" width="1600" height="988" loading="lazy">
+      <figcaption>Il complesso di Via San Martino 16A: <b>1</b> l'ingresso con l'ascensore tra la Farmacia e l'Aldi, <b>2</b> il livello 2 con le tre palazzine, <b>3</b> lo studio, che occupa il 4° piano dell'edificio di destra (la fila di finestre in rosso).</figcaption>
+    </figure>
+  </div>
+  <div class="wrap two">
+    <div>
+      <h3 style="margin-bottom:16px">Dall'ingresso allo studio</h3>
+      <ol class="route">
+        <li><span>In Via San Martino, entrate dall'ingresso tra la farmacia e l'Aldi.</span></li>
+        <li><span>In ascensore premete <b>2</b>. All'uscita vi trovate di fronte tre edifici.</span></li>
+        <li><span>Andate verso la <b>palazzina di destra</b> e percorrete tutto il vialetto: la porta d'ingresso è una sola, in fondo.</span></li>
+        <li><span>Salite al <b>4° piano</b>: tutto il piano è dello studio. Uscendo dall'ascensore, l'ingresso dello studio è a <b>sinistra</b>: annunciatevi sempre alla reception, anche per gli esami radiologici (la radiologia, a destra dell'ascensore, si raggiunge dall'interno dello studio).</span></li>
+      </ol>
+      <p class="note" style="margin-top:16px">Il percorso è interamente servito da ascensori ed è accessibile in sedia a rotelle.</p>
+    </div>
+    <div class="transport">
+      <div><h3>In treno</h3><p>Fermata TILO <b>Mendrisio S. Martino</b>, a pochi passi dallo studio.</p></div>
+      <div><h3>In autobus</h3><p>Fermata <b>Mendrisio, S. Martino</b>, linea 2 (Chiasso – Mendrisio FFS – S. Martino – Cantine di Sotto).</p></div>
+      <div><h3>In auto</h3><p>Uscita autostradale Mendrisio; lo studio si trova nell'area commerciale di San Martino.</p></div>
+      <p><a href="https://www.google.com/maps/search/?api=1&query=Studio+Medico+San+Martino+Via+San+Martino+16A+6850+Mendrisio" target="_blank" rel="noopener">Apri in Google Maps</a></p>
+      <figure class="landmark" style="margin:8px 0 0"><img src="photos/edificio.jpg" alt="Primo piano dell'edificio di destra con il quarto piano evidenziato in rosso" width="2412" height="1214" loading="lazy"><figcaption>L'edificio di destra visto dal parcheggio: le finestre dello studio sono quelle in rosso, subito sopra l'insegna.</figcaption></figure>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <h3>Impressum</h3>
+      <p>Studio Medico San Martino<br>Dr.ssa med. Ilaria Minio<br>Specialista FMH in medicina interna generale</p>
+      <p>Via San Martino 16A, 6850 Mendrisio<br>+41 91 640 50 40<br>studio.san.martino@hin.ch</p>
+    </div>
+    <div>
+      <h3>Protezione dei dati</h3>
+      <p>Questo sito non utilizza cookie, non raccoglie dati personali e non contiene moduli di contatto. Per comunicazioni che riguardano la vostra salute usate il telefono o l'indirizzo email HIN, cifrato.</p>
+      <p>I dati dei pazienti sono trattati secondo la Legge federale sulla protezione dei dati (LPD) e il segreto medico.</p>
+    </div>
+    <div>
+      <h3>Emergenze</h3>
+      <p>Fuori dagli orari di apertura, per urgenze mediche chiamate il <b>144</b> o rivolgetevi al Pronto Soccorso dell'Ospedale Beata Vergine di Mendrisio.</p>
+      <p style="margin-top:14px;opacity:.6">© <span id="anno">2026</span> Studio Medico San Martino</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  try{
+    var d=new Date(); document.getElementById('anno').textContent=d.getFullYear();
+    var day=d.getDay(); if(day<1||day>5) return;
+    var t=document.getElementById('settimana');
+    var col=2+day-1; /* colonne: 0 nome, 1 specialità, 2..6 lun..ven */
+    t.querySelectorAll('tr').forEach(function(r){ var c=r.children[col]; if(c) c.classList.add('is-today'); });
+  }catch(e){}
+})();
+</script>
+
+</body>
+</html>
